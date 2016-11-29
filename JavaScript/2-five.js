@@ -1,5 +1,4 @@
 'use strict';
-//тимур гафарович
 
 function Tree(data) {
   this.count = 1;
@@ -32,44 +31,36 @@ function Node(parent, data) {
   }
   
 
-  this.setParent = function(node /*new parent node*/){
-  	//1
-  	if(this.parent.count ==1)
-  	{
-  		this.parent.first = null;
-  		this.parent.last = null;
-  	}
-  	else 
-  	{
-  		if(this == this.parent.first)
-  			this.parent.first = this.prev;
-  		else if(this == this.parent.last)
-  			this.parent.last = this.next;
+  this.setParent = function(node /*new parent node*/) {
+    //1
+    if(this.parent.count ===1) {
+      this.parent.first = null;
+      this.parent.last = null;
+    } else {
+  	  if(this === this.parent.first)
+  	    this.parent.first = this.prev;
+  	  else if(this === this.parent.last)
+  	  this.parent.last = this.next;
   	}
 
   	//2
-  	if(this.parent.count != 1)
-  	{
-	  	this.prev.next = this.next;
-	  	this.next.prev = this.prev;
-	}
-  	this.parent.count--;
+    if(this.parent.count !== 1) {
+      this.prev.next = this.next;
+      this.next.prev = this.prev;
+    }
+    this.parent.count--;
 
-  	//3
-  	if(node.count == 0)
-  	{
-  		node.first = this;
-  		node.last = this;
-  	}
-  	else
-  	{
-  		node.last.next = this;
-  		node.last = this;
+    //3
+    if(node.count === 0) {
+  	  node.first = this;
+  	  node.last = this;
+  	} else {
+  	  node.last.next = this;
+  	  node.last = this;
   	}
 
   	node.count++;
   	this.parent = node;
-
   }
 }
 
